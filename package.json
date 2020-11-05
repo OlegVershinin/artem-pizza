@@ -34,5 +34,36 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "This project was bootstrapped with [artem-pizza](https://github.com/OlegVershinin/artem-pizza).",
+  "main": "index.js",
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "cz-customizable": "^6.3.0",
+    "husky": "^4.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlegVershinin/artem-pizza.git"
+  },
+  "author": "Oleg Vershinin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlegVershinin/artem-pizza/issues"
+  },
+  "homepage": "https://github.com/OlegVershinin/artem-pizza#readme",
+  
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./commitizen.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './commitlint.js'"
+    }
   }
 }
