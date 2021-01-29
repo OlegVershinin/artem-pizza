@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "./Radiosection.module.scss";
 import ss from "./Checkbox.module.scss";
-import sss from "./Price.module.scss";
+import sss from "../PizzaPreviewPage/Price.module.scss";
 import {
   cheeseMap,
   vegetablesMap,
@@ -9,9 +9,9 @@ import {
   diameterMap,
   heightsMap,
   saucesMap,
-} from "./ingredients";
-import { calculatePrice } from "./calculetePrice";
-import { useCollection } from "./useCollection";
+} from "../shared/ingredients";
+import { calculatePrice } from "../shared/calculetePrice";
+import { useCollection } from "../shared/useCollection";
 import classNames from "classnames";
 
 export const FormOrder = ({ onPizzaCreated }) => {
