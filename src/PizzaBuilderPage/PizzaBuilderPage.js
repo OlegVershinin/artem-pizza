@@ -12,8 +12,7 @@ export const PizzaBuilderPage = () => {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      {/* <h1>Артем Пицца</h1> */}
+    <div>
       <FormOrder onPizzaCreated={onPizzaChange} />
     </div>
   );

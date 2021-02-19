@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import s from "./Radiosection.module.scss";
-import ss from "./Checkbox.module.scss";
 import sss from "../PizzaPreviewPage/Price.module.scss";
 import {
   cheeseMap,
@@ -13,6 +12,8 @@ import {
 import { calculatePrice } from "../shared/calculetePrice";
 import { useCollection } from "../shared/useCollection";
 import classNames from "classnames";
+
+import { RadioSection, CheckboxSection } from "../RenderSection";
 
 export const FormOrder = ({ onPizzaCreated }) => {
   const [size, setSize] = useState("30 см");
@@ -76,132 +77,39 @@ export const FormOrder = ({ onPizzaCreated }) => {
       <form className={s.radiogroup} onSubmit={handleSubmit}>
         <div style={{ display: "flex" }}>
           <div className={s.right}>
-            <fieldset>
-              <legend>Выбери размер:</legend>
-              {diameterMap.map((name, index) => (
-                <div className={s.wrapper} key={index}>
-                  <input
-                    className={s.state}
-                    id={name}
-                    type="radio"
-                    name="size"
-                    value={name}
-                    onChange={updateFoundation}
-                    checked={size === name}
-                  />
-                  <label className={s.label} htmlFor={name}>
-                    <div className={s.indicator}></div>
-                    <span className={s.text}>{name}</span>
-                  </label>
-                </div>
-              ))}
-            </fieldset>
+            <RadioSection>
+              {["размер", diameterMap, "size", updateFoundation, size]}
+            </RadioSection>
           </div>
 
           <div className={s.right}>
-            <fieldset className={s.right}>
-              <legend>Выбери тесто: </legend>
-              {heightsMap.map((name, index) => (
-                <div className={s.wrapper} key={index}>
-                  <input
-                    className={s.state}
-                    id={name}
-                    type="radio"
-                    name="dough"
-                    value={name}
-                    onChange={updateFoundation}
-                    checked={dough === name}
-                  />
-                  <label className={s.label} htmlFor={name}>
-                    <div className={s.indicator}></div>
-                    <span className={s.text}>{name}</span>
-                  </label>
-                </div>
-              ))}
-            </fieldset>
+            <RadioSection>
+              {["тесто", heightsMap, "dough", updateFoundation, dough]}
+            </RadioSection>
           </div>
 
-          <fieldset>
-            <legend>Выбери соус: </legend>
-            {saucesMap.map((name, index) => (
-              <div className={s.wrapper} key={index}>
-                <input
-                  className={s.state}
-                  id={name}
-                  type="radio"
-                  name="sauce"
-                  value={name}
-                  onChange={updateFoundation}
-                  checked={sauce === name}
-                />
-                <label className={s.label} htmlFor={name}>
-                  <div className={s.indicator}></div>
-                  <span className={s.text}>{name}</span>
-                </label>
-              </div>
-            ))}
-          </fieldset>
+          <RadioSection>
+            {["соус", saucesMap, "sauce", updateFoundation, sauce]}
+          </RadioSection>
         </div>
 
-        <fieldset>
-          <legend>Сыр:</legend>
-          {cheeseMap.map((name, index) => (
-            <label className={ss.label} key={index}>
-              <div className={ss.toggle}>
-                <input
-                  className={ss.toggle_state}
-                  type="checkbox"
-                  name="cheese"
-                  value={name}
-                  onChange={updateIngredients}
-                  checked={cheeses.includes(name)}
-                />
-                <div className={ss.indicator}></div>
-              </div>
-              <div className={ss.label_text}>{name}</div>
-            </label>
-          ))}
-        </fieldset>
+        <CheckboxSection>
+          {["Сыр", cheeseMap, "cheese", updateIngredients, cheeses]}
+        </CheckboxSection>
 
-        <fieldset>
-          <legend>Овощи:</legend>
-          {vegetablesMap.map((name, index) => (
-            <label className={ss.label} key={index}>
-              <div className={ss.toggle}>
-                <input
-                  className={ss.toggle_state}
-                  type="checkbox"
-                  name="vegetables"
-                  value={name}
-                  onChange={updateIngredients}
-                  checked={vegetables.includes(name)}
-                />
-                <div className={ss.indicator}></div>
-              </div>
-              <div className={ss.label_text}>{name}</div>
-            </label>
-          ))}
-        </fieldset>
+        <CheckboxSection>
+          {[
+            "Овощи",
+            vegetablesMap,
+            "vegetables",
+            updateIngredients,
+            vegetables,
+          ]}
+        </CheckboxSection>
 
-        <fieldset>
-          <legend>Мясо:</legend>
-          {meatMap.map((name, index) => (
-            <label className={ss.label} key={index}>
-              <div className={ss.toggle}>
-                <input
-                  className={ss.toggle_state}
-                  type="checkbox"
-                  name="meat"
-                  value={name}
-                  onChange={updateIngredients}
-                  checked={meat.includes(name)}
-                />
-                <div className={ss.indicator}></div>
-              </div>
-              <div className={ss.label_text}>{name}</div>
-            </label>
-          ))}
-        </fieldset>
+        <CheckboxSection>
+          {["Мясо", meatMap, "meat", updateIngredients, meat]}
+        </CheckboxSection>
 
         <section className={sss.section}>
           <div className={sss.div}>
